@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Table, Unique } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Table, Unique } from "typeorm";
 
 @Entity('listing')
 export class ListingEntity {

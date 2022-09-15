@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "myconsole": "node --require ts-node/register src/console.ts",
-    "typeorm:generate": "node --require ts-node/register ./node_modules/typeorm/cli.js migration:generate -n",
+    "typeorm:generate": "node --require ts-node/register ./node_modules/typeorm/cli.js migration:generate -d ./ormconfig.ts ",
     "typeorm:run": "node --require ts-node/register ./node_modules/typeorm/cli.js migration:run -d ormconfig.ts"
   },
   "dependencies": {
@@ -29,7 +29,9 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "csv-parser": "^3.0.0",
+    "mysql": "^2.18.1",
     "nest-commander": "^3.0.0",
+    "node-cron": "^3.0.2",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

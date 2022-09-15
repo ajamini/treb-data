@@ -5,11 +5,40 @@ import * as csv from "csv-parser";
 import { appConnection } from "../datasource"
 import { ListingEntity } from '../listing.entity';
 
+
 @Command({ name: 'process', description: 'A parameter parse' })
 export class ProcessCommand extends CommandRunner {
   constructor(private readonly httpService: HttpService) {
     super();
   }
+
+  private date_fields = [
+    'lud',
+    'cctd',
+    'cd',
+    'cldt',
+    'cndsold_xd',
+    'dt_sus',
+    'dt_ter',
+    'input_date',
+    'ld',
+    'pctd',
+    'redt',
+    'rr_edt',
+    'scdt',
+    'susdt',
+    'td',
+    'uctd',
+    'unavail_dt',
+    'vtour_updt',
+    'wrtd',
+    'xd',
+    'xdtd',
+    'lcdt',
+    'oh_date4',
+    'oh_date5',
+    'oh_date6',
+  ];
 
   async run(
     passedParams: string[],
@@ -28,8 +57,8 @@ export class ProcessCommand extends CommandRunner {
       method: 'POST',
       responseType: 'stream',
       params: {
-        user_code: 't017ami',
-        password: 'O32p25',
+        user_code: process.env.TREBUSER ?? '',
+        password: process.env.TREBPASS ?? '',
         au_both: filetype, // 'avail/unavail'
         query_str: "lud>='" + date + "'",
       },
@@ -59,6 +88,17 @@ export class ProcessCommand extends CommandRunner {
         if (record[key] === '') {
           delete record[key];
         }
+
+        if (this.date_fields.find((v) => v == key)) {
+          if (record[key]) {
+            try {
+              const ndate = new Date(Date.parse(record[key]));
+              record[key] = ndate.toISOString().split('T')[0];
+            } catch (e) {
+              record[key] = null;
+            }
+          }
+        }
       }
 
       let result;
@@ -72,6 +112,7 @@ export class ProcessCommand extends CommandRunner {
       }
 
       console.log('Processing ' + record.ml_num);
+
       if (result.length) {
         await appConnection
           .createQueryBuilder()
