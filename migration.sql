@@ -492,7 +492,7 @@ ALTER TABLE listing ADD COLUMN a_c varchar(100),
 	ADD COLUMN water_acc_bldg2_out varchar(100),
 	ADD COLUMN water_del_feat1_out varchar(100),
 	ADD COLUMN water_del_feat2_out varchar(100),
-	ADD COLUMN sewage1_out varchar(100),x
+	ADD COLUMN sewage1_out varchar(100),
 	ADD COLUMN sewage2_out x    ,
 	ADD COLUMN potl varchar(100),
 	ADD COLUMN ddf_idx varchar(100),
