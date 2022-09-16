@@ -6,7 +6,7 @@ export const connectionSource = new DataSource({
   port: process.env.DBPORT ? parseInt(process.env.DBPORT) : 5432,
   username: process.env.DBUSER ?? 'postgres',
   password: process.env.DBPASS ?? 'mysecretpassword',
-  database: 'tredb',
+  database: 'db-postgres',
   entities: ['src/**.entity.ts'],
   migrations: ['migration/*.ts'],
   migrationsRun: false,
