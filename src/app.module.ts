@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConsoleModule } from 'nestjs-console';
 import { HttpModule } from '@nestjs/axios';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ListingEntity } from './listing.entity';
@@ -11,7 +10,6 @@ import { ProcessCommand } from "./commands/process";
 
 @Module({
   imports: [
-    ConsoleModule,
     HttpModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
