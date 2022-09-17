@@ -2,8 +2,8 @@ const cron = require('node-cron');
 const { exec } = require("child_process");
 
 // Schedule tasks to be run on the server.
-cron.schedule('0,15,30,45 * * * * *', function() {
-  console.log('running a task every second');
+cron.schedule('* * * * *', function() {
+  console.log('running a task every minute');
   exec('date', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
@@ -17,7 +17,7 @@ cron.schedule('0,15,30,45 * * * * *', function() {
   });
 });
 
-cron.schedule('15 5 * * *', function() {
+cron.schedule('* 5 * * *', function() {
   exec('npm run myconsole process avail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
