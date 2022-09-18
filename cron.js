@@ -17,8 +17,8 @@ cron.schedule('* * * * *', function() {
   });
 });
 
-cron.schedule('5 * * * *', function() {
-  exec('npm run myconsole:dist process avail', (error, stdout, stderr) => {
+cron.schedule('12,15,18,20 * * * *', function() {
+  exec('npm run myconsole process avail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
