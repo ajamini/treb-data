@@ -30,8 +30,8 @@ export class DownloadCommand extends CommandRunner {
       method: 'POST',
       responseType: 'stream',
       params: {
-        user_code: 't017ami',
-        password: 'O32p25',
+        user_code: process.env.TREBUSER || '',
+        password: process.env.TREBPASS || '',
         au_both: 'unavail', // 'avail/unavail'
         query_str: "lud>='20220101'",
       }

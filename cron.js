@@ -6,7 +6,7 @@ cron.schedule('* * * * *', function() {
   console.log('.');
 });
 
-cron.schedule('25,30,45,55 * * * *', function() {
+cron.schedule('10,20,30,40,50,0 * * * *', function() {
   exec('npm run myconsole process avail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
@@ -20,7 +20,7 @@ cron.schedule('25,30,45,55 * * * *', function() {
   });
 });
 
-cron.schedule('30 5 * * *', function() {
+cron.schedule('10,20,30,40,50,0 * * *', function() {
   exec('npm run myconsole:dist process unavail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);

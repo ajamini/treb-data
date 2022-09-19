@@ -13,7 +13,7 @@ import { ProcessCommand } from "./commands/process";
     HttpModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DBHOST || 'localhost',
+      host: process.env.DBHOST || '172.17.0.2',
       port: parseInt(process.env.DBPORT || '5432'),
       username: process.env.DBUSER || 'postgres',
       password: process.env.DBPASS || 'mysecretpassword',
