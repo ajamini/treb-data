@@ -6,7 +6,7 @@ cron.schedule('* * * * *', function() {
   console.log('.');
 });
 
-cron.schedule('55,0,5,10 * * * *', function() {
+cron.schedule('25,30,45,55 * * * *', function() {
   exec('npm run myconsole process avail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
