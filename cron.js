@@ -20,7 +20,7 @@ cron.schedule('10,20,30,40,50,0 * * * *', function() {
   });
 });
 
-cron.schedule('10,20,30,40,50,0 * * *', function() {
+cron.schedule('10,20,30,40,50,0 * * * *', function() {
   exec('npm run myconsole:dist process unavail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
