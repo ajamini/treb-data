@@ -57,8 +57,8 @@ export class ProcessCommand extends CommandRunner {
       method: 'POST',
       responseType: 'stream',
       params: {
-        user_code: process.env.TREBUSER ?? '',
-        password: process.env.TREBPASS ?? '',
+        user_code: process.env.TREBUSER || '',
+        password: process.env.TREBPASS || '',
         au_both: filetype, // 'avail/unavail'
         query_str: "lud>='" + date + "'",
       },

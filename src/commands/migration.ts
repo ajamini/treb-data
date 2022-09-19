@@ -56,10 +56,6 @@ export class MigrationCommand extends CommandRunner {
     'oh_date6',
   ];
 
-  constructor(private readonly httpService: HttpService) {
-    super();
-  }
-
   async run(
     passedParams: string[],
     options?: BasicCommandOptions,
