@@ -11,15 +11,15 @@ import { ProcessCommand } from "./commands/process";
 @Module({
   imports: [
     HttpModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DBHOST || '172.17.0.2',
-      port: parseInt(process.env.DBPORT || '5432'),
-      username: process.env.DBUSER || 'postgres',
-      password: process.env.DBPASS || 'mysecretpassword',
-      database: process.env.DBNAME || 'tredb',
-      entities: [ListingEntity],
-    }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: process.env.DBHOST || '172.17.0.2',
+    //   port: parseInt(process.env.DBPORT || '5432'),
+    //   username: process.env.DBUSER || 'postgres',
+    //   password: process.env.DBPASS || 'mysecretpassword',
+    //   database: process.env.DBNAME || 'tredb',
+    //   entities: [ListingEntity],
+    // }),
   ],
   controllers: [AppController],
   providers: [AppService, DownloadCommand, MigrationCommand, ProcessCommand],

@@ -7,7 +7,7 @@ cron.schedule('* * * * *', function() {
 });
 
 cron.schedule('10,20,30,40,50,0 * * * *', function() {
-  exec('npm run myconsole process avail', (error, stdout, stderr) => {
+  exec('npm run myconsole download avail', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -20,17 +20,17 @@ cron.schedule('10,20,30,40,50,0 * * * *', function() {
   });
 });
 
-cron.schedule('10,20,30,40,50,0 * * * *', function() {
-  exec('npm run myconsole:dist process unavail', (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
-});
+// cron.schedule('10,20,30,40,50,0 * * * *', function() {
+//   exec('npm run myconsole process unavail', (error, stdout, stderr) => {
+//     if (error) {
+//       console.log(`error: ${error.message}`);
+//       return;
+//     }
+//     if (stderr) {
+//       console.log(`stderr: ${stderr}`);
+//       return;
+//     }
+//     console.log(`stdout: ${stdout}`);
+//   });
+// });
 
