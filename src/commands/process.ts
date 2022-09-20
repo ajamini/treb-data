@@ -2,13 +2,15 @@ import { Command, CommandRunner, Option } from 'nest-commander';
 import { HttpService } from '@nestjs/axios';
 import { createReadStream, createWriteStream } from "fs";
 import * as csv from "csv-parser";
-import { appConnection } from "../datasource"
 import { ListingEntity } from '../listing.entity';
+import { DataSource } from "typeorm";
 
 
 @Command({ name: 'process', description: 'A parameter parse' })
 export class ProcessCommand extends CommandRunner {
-  constructor(private readonly httpService: HttpService) {
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly dataSource: DataSource) {
     super();
   }
 
@@ -103,7 +105,7 @@ export class ProcessCommand extends CommandRunner {
 
       let result;
       try {
-        result = await appConnection
+        result = await this.dataSource
           .getRepository(ListingEntity)
           .find({ where: { ml_num: record.ml_num } });
 
@@ -114,7 +116,7 @@ export class ProcessCommand extends CommandRunner {
       console.log('Processing ' + record.ml_num);
 
       if (result.length) {
-        await appConnection
+        await this.dataSource
           .createQueryBuilder()
           .update(ListingEntity)
           .set(record)
@@ -123,7 +125,7 @@ export class ProcessCommand extends CommandRunner {
 
         console.log('Updated');
       } else {
-        await appConnection
+        await this.dataSource
           .createQueryBuilder()
           .insert()
           .into(ListingEntity)
